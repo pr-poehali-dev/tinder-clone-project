@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import Icon from '@/components/ui/icon';
+import AuthModal from '@/components/AuthModal';
 
 export default function Index() {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -20,6 +21,147 @@ export default function Index() {
     { id: 3, sender: 'other', text: 'Тоже хорошо! Может встретимся на кофе?', time: '14:35' }
   ]);
   const [newMessage, setNewMessage] = useState('');
+  const [user, setUser] = useState<any>(null);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const storedUser = localStorage.getItem('lovematch_user');
+      const storedToken = localStorage.getItem('lovematch_token');
+      
+      if (storedUser && storedToken) {
+        try {
+          const userData = JSON.parse(storedUser);
+          setUser(userData);
+        } catch (error) {
+          localStorage.removeItem('lovematch_user');
+          localStorage.removeItem('lovematch_token');
+        }
+      }
+      setIsLoading(false);
+    };
+    
+    checkAuth();
+  }, []);
+
+  const handleLogin = (userData: any) => {
+    setUser(userData);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('lovematch_user');
+    localStorage.removeItem('lovematch_token');
+    setUser(null);
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-orange-100 flex items-center justify-center">
+        <div className="text-center">
+          <Icon name="Loader2" size={48} className="animate-spin text-pink-500 mx-auto mb-4" />
+          <p className="text-lg text-gray-600">Загрузка...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <>
+        <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-orange-100">
+          {/* Landing Header */}
+          <header className="bg-white/80 backdrop-blur-md border-b border-pink-200">
+            <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg flex items-center justify-center">
+                  <Icon name="Heart" size={20} className="text-white" />
+                </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
+                  LoveMatch
+                </span>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <Button 
+                  variant="outline" 
+                  onClick={() => setShowAuthModal(true)}
+                  className="border-pink-300 text-pink-600 hover:bg-pink-50"
+                >
+                  Войти
+                </Button>
+                <Button 
+                  onClick={() => setShowAuthModal(true)}
+                  className="btn-gradient"
+                >
+                  Регистрация
+                </Button>
+              </div>
+            </div>
+          </header>
+
+          {/* Landing Content */}
+          <main className="container mx-auto px-4 py-16 text-center">
+            <div className="max-w-4xl mx-auto">
+              <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-pink-500 via-purple-500 to-red-500 bg-clip-text text-transparent">
+                Найди свою любовь
+              </h1>
+              <p className="text-2xl text-gray-600 mb-8">
+                Более 10 000 пользователей уже нашли свою половинку в LoveMatch
+              </p>
+              
+              <div className="grid md:grid-cols-3 gap-8 mb-12">
+                <Card className="card-hover">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Icon name="Users" size={32} className="text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">Умный поиск</h3>
+                    <p className="text-gray-600">Находите людей по интересам и совместимости</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="card-hover">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Icon name="Shield" size={32} className="text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">Безопасность</h3>
+                    <p className="text-gray-600">Верифицированные профили и защищенные данные</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="card-hover">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Icon name="MessageCircle" size={32} className="text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">Живое общение</h3>
+                    <p className="text-gray-600">Чат, видеозвонки и реальные встречи</p>
+                  </CardContent>
+                </Card>
+              </div>
+              
+              <Button 
+                size="lg"
+                onClick={() => setShowAuthModal(true)}
+                className="btn-gradient text-lg px-8 py-4 animate-heart-beat"
+              >
+                <Icon name="Heart" size={24} className="mr-2" />
+                Начать знакомиться
+              </Button>
+            </div>
+          </main>
+        </div>
+        
+        <AuthModal 
+          isOpen={showAuthModal}
+          onClose={() => setShowAuthModal(false)}
+          onLogin={handleLogin}
+        />
+      </>
+    );
+  }
 
   const profiles = [
     {
@@ -128,18 +270,18 @@ export default function Index() {
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4">
                     <Avatar className="w-20 h-20">
-                      <AvatarImage src="/img/d5ed9f21-1358-4e9b-afc1-e7e4df3c153b.jpg" />
-                      <AvatarFallback>Я</AvatarFallback>
+                      <AvatarImage src={user.avatar} />
+                      <AvatarFallback>{user.name?.[0]}</AvatarFallback>
                     </Avatar>
                     <div>
-                      <h3 className="font-semibold text-lg">Елена, 26</h3>
-                      <p className="text-gray-600">Москва</p>
+                      <h3 className="font-semibold text-lg">{user.name}, {user.age}</h3>
+                      <p className="text-gray-600">{user.city}</p>
                     </div>
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <Label>Верификация</Label>
-                      <Switch />
+                      <Switch checked={user.verified} />
                     </div>
                     <div className="flex items-center justify-between">
                       <Label>Геолокация</Label>
@@ -147,9 +289,25 @@ export default function Index() {
                     </div>
                     <div className="flex items-center justify-between">
                       <Label>Премиум статус</Label>
-                      <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white">
-                        Pro
-                      </Badge>
+                      {user.premium ? (
+                        <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white">
+                          Pro
+                        </Badge>
+                      ) : (
+                        <Badge variant="outline">
+                          Базовый
+                        </Badge>
+                      )}
+                    </div>
+                    <div className="pt-4 border-t">
+                      <Button 
+                        onClick={handleLogout}
+                        variant="outline" 
+                        className="w-full text-red-600 border-red-300 hover:bg-red-50"
+                      >
+                        <Icon name="LogOut" size={18} className="mr-2" />
+                        Выйти
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -452,7 +610,7 @@ export default function Index() {
                     </li>
                   </ul>
                   <Button variant="outline" className="w-full mt-6">
-                    Текущий план
+                    {user.premium ? 'Текущий план' : 'Активен'}
                   </Button>
                 </CardContent>
               </Card>
@@ -492,7 +650,7 @@ export default function Index() {
                     </li>
                   </ul>
                   <Button className="w-full mt-6 btn-gradient">
-                    Подключить Premium
+                    {user.premium ? 'Текущий план' : 'Подключить Premium'}
                   </Button>
                 </CardContent>
               </Card>
