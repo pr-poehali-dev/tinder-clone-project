@@ -170,7 +170,7 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
           {/* Bottom Bar */}
           <div className="border-t border-pink-100 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-500 text-sm">
-              © 2024 Stellar Dating. Все права защищены.
+              © 2025 Stellar Dating. Все права защищены.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="https://instagram.com/stellardating" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
