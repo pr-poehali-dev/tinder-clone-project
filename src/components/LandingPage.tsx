@@ -113,10 +113,10 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
                 Безопасно, современно, эффективно.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
+                <a href="mailto:info@stellardating.com" className="text-gray-400 hover:text-pink-500 transition-colors">
                   <Icon name="Mail" size={20} />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
+                <a href="tel:+78001234567" className="text-gray-400 hover:text-pink-500 transition-colors">
                   <Icon name="Phone" size={20} />
                 </a>
               </div>
@@ -132,14 +132,14 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
                   </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-pink-500 transition-colors">
+                  <button onClick={onShowAuth} className="text-gray-600 hover:text-pink-500 transition-colors">
                     Карьера
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-pink-500 transition-colors">
+                  <button onClick={onShowAuth} className="text-gray-600 hover:text-pink-500 transition-colors">
                     Блог
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -159,9 +159,9 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
                   </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-pink-500 transition-colors">
+                  <button onClick={onShowAuth} className="text-gray-600 hover:text-pink-500 transition-colors">
                     Безопасность
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -173,13 +173,13 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
               © 2024 Stellar Dating. Все права защищены.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
+              <a href="https://instagram.com/stellardating" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
                 <Icon name="Instagram" size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
+              <a href="https://twitter.com/stellardating" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
                 <Icon name="Twitter" size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
+              <a href="https://facebook.com/stellardating" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
                 <Icon name="Facebook" size={20} />
               </a>
             </div>
