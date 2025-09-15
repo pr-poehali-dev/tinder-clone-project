@@ -240,6 +240,112 @@ export default function Index() {
           <Icon name="Zap" size={24} />
         </Button>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-white/80 backdrop-blur-md border-t border-pink-200 mt-16">
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg flex items-center justify-center">
+                  <Icon name="Heart" size={20} className="text-white" />
+                </div>
+                <span className="text-xl font-bold bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
+                  Stellar Dating
+                </span>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Найдите свою идеальную половинку с помощью современных технологий подбора пар. 
+                Безопасно, надежно и эффективно.
+              </p>
+              <div className="flex space-x-4">
+                <Button variant="outline" size="sm">
+                  <Icon name="Mail" size={16} className="mr-2" />
+                  support@stellardating.com
+                </Button>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-4">Компания</h3>
+              <ul className="space-y-2">
+                <li>
+                  <button 
+                    onClick={() => window.location.href = '/about'}
+                    className="text-gray-600 hover:text-pink-500 transition-colors"
+                  >
+                    О нас
+                  </button>
+                </li>
+                <li>
+                  <button className="text-gray-600 hover:text-pink-500 transition-colors">
+                    Карьера
+                  </button>
+                </li>
+                <li>
+                  <button className="text-gray-600 hover:text-pink-500 transition-colors">
+                    Пресс-центр
+                  </button>
+                </li>
+                <li>
+                  <button className="text-gray-600 hover:text-pink-500 transition-colors">
+                    Блог
+                  </button>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-4">Правовая информация</h3>
+              <ul className="space-y-2">
+                <li>
+                  <button 
+                    onClick={() => window.location.href = '/privacy'}
+                    className="text-gray-600 hover:text-pink-500 transition-colors"
+                  >
+                    Политика конфиденциальности
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => window.location.href = '/terms'}
+                    className="text-gray-600 hover:text-pink-500 transition-colors"
+                  >
+                    Условия использования
+                  </button>
+                </li>
+                <li>
+                  <button className="text-gray-600 hover:text-pink-500 transition-colors">
+                    Правила сообщества
+                  </button>
+                </li>
+                <li>
+                  <button className="text-gray-600 hover:text-pink-500 transition-colors">
+                    Безопасность
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-pink-200 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-600 text-sm">
+              © 2024 Stellar Dating. Все права защищены.
+            </p>
+            <div className="flex space-x-4 mt-4 md:mt-0">
+              <Button variant="ghost" size="sm">
+                <Icon name="Instagram" size={20} />
+              </Button>
+              <Button variant="ghost" size="sm">
+                <Icon name="Twitter" size={20} />
+              </Button>
+              <Button variant="ghost" size="sm">
+                <Icon name="Facebook" size={20} />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
