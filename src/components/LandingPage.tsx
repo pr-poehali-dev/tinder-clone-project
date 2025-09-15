@@ -48,7 +48,7 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
             Stellar Dating
           </h1>
           <p className="text-2xl text-gray-600 mb-8">
-            Более 10 000 пользователей уже нашли свою половинку в Stellar Dating
+            Найдите свою любовь и будьте счастливы.
           </p>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">
