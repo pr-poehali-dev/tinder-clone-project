@@ -10,7 +10,7 @@ import Icon from '@/components/ui/icon';
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onLogin: (user: any) => void;
+  onLogin: (email: string, name: string) => void;
 }
 
 export default function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
@@ -36,22 +36,7 @@ export default function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) 
     
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    const userData = {
-      id: Math.random(),
-      name: 'Елена',
-      email: loginData.email,
-      age: 26,
-      city: 'Москва',
-      avatar: '/img/d5ed9f21-1358-4e9b-afc1-e7e4df3c153b.jpg',
-      premium: true,
-      verified: true,
-      loginTime: new Date().toISOString()
-    };
-    
-    localStorage.setItem('lovematch_user', JSON.stringify(userData));
-    localStorage.setItem('lovematch_token', 'auth_token_' + Date.now());
-    
-    onLogin(userData);
+    onLogin(loginData.email, 'Елена');
     setIsLoading(false);
     onClose();
   };
@@ -68,22 +53,7 @@ export default function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) 
     
     await new Promise(resolve => setTimeout(resolve, 1500));
     
-    const userData = {
-      id: Math.random(),
-      name: registerData.name,
-      email: registerData.email,
-      age: parseInt(registerData.age) || 25,
-      city: registerData.city || 'Москва',
-      avatar: '/img/d5ed9f21-1358-4e9b-afc1-e7e4df3c153b.jpg',
-      premium: false,
-      verified: false,
-      loginTime: new Date().toISOString()
-    };
-    
-    localStorage.setItem('lovematch_user', JSON.stringify(userData));
-    localStorage.setItem('lovematch_token', 'auth_token_' + Date.now());
-    
-    onLogin(userData);
+    onLogin(registerData.email, registerData.name);
     setIsLoading(false);
     onClose();
   };

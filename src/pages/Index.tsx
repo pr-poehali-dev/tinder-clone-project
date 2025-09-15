@@ -11,6 +11,8 @@ import MatchesTab from '@/components/MatchesTab';
 import ChatTab from '@/components/ChatTab';
 import EventsTab from '@/components/EventsTab';
 import PremiumTab from '@/components/PremiumTab';
+import { User } from '@/types/User';
+import { storage } from '@/utils/storage';
 
 export default function Index() {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -22,23 +24,17 @@ export default function Index() {
     { id: 3, sender: 'other', text: 'Тоже хорошо! Может встретимся на кофе?', time: '14:35' }
   ]);
   const [newMessage, setNewMessage] = useState('');
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const checkAuth = () => {
-      const storedUser = localStorage.getItem('lovematch_user');
-      const storedToken = localStorage.getItem('lovematch_token');
+      const userData = storage.getUser();
+      const token = storage.getToken();
       
-      if (storedUser && storedToken) {
-        try {
-          const userData = JSON.parse(storedUser);
-          setUser(userData);
-        } catch (error) {
-          localStorage.removeItem('lovematch_user');
-          localStorage.removeItem('lovematch_token');
-        }
+      if (userData && token) {
+        setUser(userData);
       }
       setIsLoading(false);
     };
@@ -46,13 +42,19 @@ export default function Index() {
     checkAuth();
   }, []);
 
-  const handleLogin = (userData: any) => {
-    setUser(userData);
+  const handleLogin = (email: string, name: string) => {
+    const newUser = storage.createDefaultUser(email, name);
+    const token = 'mock_token_' + Date.now();
+    storage.saveUser(newUser, token);
+    setUser(newUser);
+  };
+
+  const handleUserUpdate = (updatedUser: User) => {
+    setUser(updatedUser);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('lovematch_user');
-    localStorage.removeItem('lovematch_token');
+    storage.clearUserData();
     setUser(null);
   };
 
@@ -174,7 +176,7 @@ export default function Index() {
                 <Badge className="bg-red-500 text-white text-xs">{matches.length}</Badge>
               )}
             </button>
-            <UserProfile user={user} onLogout={handleLogout} />
+            <UserProfile user={user} onLogout={handleLogout} onUserUpdate={handleUserUpdate} />
           </nav>
         </div>
       </header>
