@@ -159,9 +159,9 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
                   </Link>
                 </li>
                 <li>
-                  <button onClick={onShowAuth} className="text-gray-600 hover:text-pink-500 transition-colors">
+                  <Link to="/security" className="text-gray-600 hover:text-pink-500 transition-colors">
                     Безопасность
-                  </button>
+                  </Link>
                 </li>
               </ul>
             </div>
