@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
+import { Link } from 'react-router-dom';
 
 interface LandingPageProps {
   onShowAuth: () => void;
@@ -92,6 +93,99 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
           </Button>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-white border-t border-pink-200 py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Company Info */}
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg flex items-center justify-center">
+                  <Icon name="Heart" size={20} className="text-white" />
+                </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
+                  Stellar Dating
+                </span>
+              </div>
+              <p className="text-gray-600 mb-4 max-w-md">
+                Найдите настоящую любовь с помощью нашей умной платформы знакомств. 
+                Безопасно, современно, эффективно.
+              </p>
+              <div className="flex space-x-4">
+                <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
+                  <Icon name="Mail" size={20} />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
+                  <Icon name="Phone" size={20} />
+                </a>
+              </div>
+            </div>
+
+            {/* Company Links */}
+            <div>
+              <h4 className="font-semibold mb-4">Компания</h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/about" className="text-gray-600 hover:text-pink-500 transition-colors">
+                    О нас
+                  </Link>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-pink-500 transition-colors">
+                    Карьера
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-pink-500 transition-colors">
+                    Блог
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal Links */}
+            <div>
+              <h4 className="font-semibold mb-4">Правовая информация</h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/privacy" className="text-gray-600 hover:text-pink-500 transition-colors">
+                    Политика конфиденциальности
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/terms" className="text-gray-600 hover:text-pink-500 transition-colors">
+                    Условия использования
+                  </Link>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-pink-500 transition-colors">
+                    Безопасность
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-pink-100 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-500 text-sm">
+              © 2024 Stellar Dating. Все права защищены.
+            </p>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
+                <Icon name="Instagram" size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
+                <Icon name="Twitter" size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors">
+                <Icon name="Facebook" size={20} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
