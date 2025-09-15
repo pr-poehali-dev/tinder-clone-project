@@ -188,7 +188,7 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
       </footer>
 
       {/* Fixed Mobile Menu */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-pink-200 lg:hidden z-50">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-pink-200 lg:hidden z-50 safe-area-inset-bottom" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
         <div className="grid grid-cols-4 py-2">
           <button 
             onClick={onShowAuth}
