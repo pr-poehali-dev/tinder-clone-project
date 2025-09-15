@@ -186,6 +186,43 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
           </div>
         </div>
       </footer>
+
+      {/* Fixed Mobile Menu */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-pink-200 lg:hidden z-50">
+        <div className="grid grid-cols-4 py-2">
+          <button 
+            onClick={onShowAuth}
+            className="flex flex-col items-center justify-center py-2 px-1 text-pink-600 hover:bg-pink-50 transition-colors"
+          >
+            <Icon name="Home" size={20} />
+            <span className="text-xs mt-1">Главная</span>
+          </button>
+          
+          <button 
+            onClick={onShowAuth}
+            className="flex flex-col items-center justify-center py-2 px-1 text-gray-500 hover:bg-pink-50 hover:text-pink-600 transition-colors"
+          >
+            <Icon name="Search" size={20} />
+            <span className="text-xs mt-1">Поиск</span>
+          </button>
+          
+          <button 
+            onClick={onShowAuth}
+            className="flex flex-col items-center justify-center py-2 px-1 text-gray-500 hover:bg-pink-50 hover:text-pink-600 transition-colors"
+          >
+            <Icon name="MessageCircle" size={20} />
+            <span className="text-xs mt-1">Чаты</span>
+          </button>
+          
+          <button 
+            onClick={onShowAuth}
+            className="flex flex-col items-center justify-center py-2 px-1 text-gray-500 hover:bg-pink-50 hover:text-pink-600 transition-colors"
+          >
+            <Icon name="User" size={20} />
+            <span className="text-xs mt-1">Профиль</span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
