@@ -14,14 +14,26 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
       {/* Landing Header */}
       <header className="bg-white/80 backdrop-blur-md border-b border-pink-200">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+          <button 
+            onClick={() => {
+              // Проверяем авторизацию - если есть токен в localStorage, переходим на /matches
+              // Иначе просто обновляем страницу
+              const isLoggedIn = localStorage.getItem('authToken') || localStorage.getItem('user');
+              if (isLoggedIn) {
+                window.location.href = '/matches';
+              } else {
+                window.location.reload();
+              }
+            }}
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+          >
             <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg flex items-center justify-center">
               <Icon name="Heart" size={20} className="text-white" />
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
               Stellar Dating
             </span>
-          </div>
+          </button>
           
           <div className="flex items-center space-x-4">
             <Button 
