@@ -65,7 +65,7 @@ export default function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) 
           <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
             <Icon name="Heart" size={32} />
           </div>
-          <h2 className="text-2xl font-bold mb-2">Добро пожаловать в LoveMatch!</h2>
+          <h2 className="text-2xl font-bold mb-2">Добро пожаловать в Stellar Dating!</h2>
           <p className="text-pink-100">Найдите свою половинку уже сегодня</p>
         </div>
 

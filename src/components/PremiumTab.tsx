@@ -12,7 +12,7 @@ export default function PremiumTab({ user }: PremiumTabProps) {
     <div className="space-y-6">
       <div className="text-center animate-fade-in">
         <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-          LoveMatch Premium
+          Stellar Dating Premium
         </h2>
         <p className="text-gray-600">Получите максимум от знакомств</p>
       </div>

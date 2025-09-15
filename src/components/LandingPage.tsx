@@ -18,7 +18,7 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
               <Icon name="Heart" size={20} className="text-white" />
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
-              LoveMatch
+              Stellar Dating
             </span>
           </div>
           
@@ -47,7 +47,7 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
             Найди свою любовь
           </h1>
           <p className="text-2xl text-gray-600 mb-8">
-            Более 10 000 пользователей уже нашли свою половинку в LoveMatch
+            Более 10 000 пользователей уже нашли свою половинку в Stellar Dating
           </p>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">

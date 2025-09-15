@@ -159,7 +159,7 @@ export default function Index() {
               <Icon name="Heart" size={20} className="text-white" />
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
-              LoveMatch
+              Stellar Dating
             </span>
           </div>
           
