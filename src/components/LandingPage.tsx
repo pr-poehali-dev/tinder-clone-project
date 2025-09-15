@@ -45,7 +45,7 @@ export default function LandingPage({ onShowAuth }: LandingPageProps) {
       <main className="container mx-auto px-4 py-16 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-pink-500 via-purple-500 to-red-500 bg-clip-text text-transparent">
-            Найди свою любовь
+            Stellar Dating
           </h1>
           <p className="text-2xl text-gray-600 mb-8">
             Более 10 000 пользователей уже нашли свою половинку в Stellar Dating
