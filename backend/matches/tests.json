@@ -1,0 +1,31 @@
+{
+  "tests": [
+    {
+      "name": "Test swipe action",
+      "method": "POST",
+      "body": {
+        "action": "swipe",
+        "swiper_id": 1,
+        "swiped_id": 2,
+        "is_like": true
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "message": "string",
+        "is_match": "boolean"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test get potential matches",
+      "method": "GET",
+      "path": "/?action=potential&user_id=1",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "potential_matches": "array",
+        "count": "number"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
